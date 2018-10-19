@@ -5,6 +5,7 @@
 </head>
 
 <body>
+	<nav th:replace="fragments/fragment :: navbar "></nav>
 	<h2>Hello!</h2>
 	<h3>Tambah Jabatan</h3>
 	<form th:action="@{/jabatan/tambah}" th:object="${jabatan}" method = "POST">

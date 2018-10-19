@@ -1,5 +1,8 @@
 package com.apap.tugas1.controller;
 
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -76,6 +79,8 @@ public class PegawaiController {
 	@RequestMapping(value = "/pegawai/tambah", method = RequestMethod.GET)
 	private String add(Model model) {
 		model.addAttribute("pegawai", new PegawaiModel());
+		List<InstansiModel> allInstansi = instansiService.findAllInstansi();
+		model.addAttribute("listInstansi", allInstansi);
 		return "addPegawai"; //bikin add pegawai
 	}
 	
@@ -115,5 +120,33 @@ public class PegawaiController {
 				return 0;
 			}
 		}
+	}
+	
+	public String generateNip(PegawaiModel pegawai) {
+		  InstansiModel instansi = pegawai.getInstansi();
+		  ProvinsiModel provinsi = instansi.getProvinsi();
+		  
+		  long idProvinsi = provinsi.getId();
+		  String idProvDiNip = Long.toString(idProvinsi);
+		  
+		  long idInstansi = instansi.getId();
+		  String idInsta = Long.toString(idInstansi);
+		  String idInstansiDiNip = idInsta.substring(Math.max(idInsta.length() - 2, 0));
+		  
+		  Date tanggalLahir = pegawai.getTanggalLahir();
+		  DateFormat dateFormat = new SimpleDateFormat("ddMMYY");
+		  String birthDateDiNip = dateFormat.format(tanggalLahir);
+		  
+		  String tanggalMasukDiNip = pegawai.getTahunMasuk();
+		  
+		  int count = 0;
+		  List<PegawaiModel> pegawaiDisini = instansi.getPegawaiInstansi();
+		  for(PegawaiModel employee: pegawaiDisini) {
+			  if(employee.getTahunMasuk().equals(pegawai.getTahunMasuk()) && employee.getTanggalLahir().equals(pegawai.getTanggalLahir())) {
+				  count+=1;
+			  }
+		  }
+		  
+		  return idProvDiNip+idInstansiDiNip+birthDateDiNip+tanggalMasukDiNip+count;
 	}
 }
