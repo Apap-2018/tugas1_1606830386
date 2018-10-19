@@ -79,6 +79,26 @@
 		</div>
 		</div>
 	<br>
+	
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="card">
+					<div class="card-header">
+					LIHAT PEGAWAI TERTUA DAN TERMUDA
+					</div>
+					<form th:action="@{/pegawai/tertua-termuda}" method="GET">
+						<div class="card-body">
+							<label for="id">Pilih Instansi</label>
+							<select class="form-control" name="idInstansi">
+    							<option th:each="instansi,iterStat : ${listInstansi}" th:value="${instansi.id}" th:text="${instansi.nama} + ' - '+ ${instansi.provinsi.nama}"></option>
+   						 	</select>
+							<button type="submit" class="btn btn-primary">Cari</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
 	</body>
 	
 </html>
