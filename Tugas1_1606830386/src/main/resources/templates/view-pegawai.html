@@ -9,23 +9,56 @@
 <body>
 	<nav th:replace="fragments/fragment :: navbar "></nav>
 	
-	
-	<h3 th:text="'Lihat data Pegawai - ' + ${pegawai.nip}"></h3>
-	<h3 th:text="'Name: '+${pegawai.nama}"></h3>
-	<h3 th:text="'Tempat Lahir: '+${pegawai.tempatLahir}"></h3>
-	<h3 th:text="'Tanggal Lahir: '+${pegawai.tanggalLahir}"></h3>
-	<h3 th:text="'Tanggal Masuk: '+${pegawai.tahunMasuk}"></h3>
-	<h3 th:text="'Nama Instansi: '+${pegawai.instansi.nama}"></h3>
-	
-	<table>
-		<h2>Jabatan</h2>
-		<tr th:each="jabatan,iterStat : ${jabatans}">
-    		<td th:text="${jabatan.nama}">nama</td>
- 		</tr>
-	</table>
-	
-	
-	<h3 th:text="'Gaji: Rp'+${gaji}"></h3>
+	<div id="Content" class="container-full-bg">
+	<h1 th:text="'Lihat Data Pegawai - ' + ${pegawai.nip}"></h1>
+		<div class="card my-5">
+			<table class="table">
+				<tbody>
+					<tr>
+						<th scope="row">NIP</th>
+						<td th:text="${pegawai.nip}"></td>
+					</tr>
+					<tr>
+						<th scope="row">Nama</th>
+						<td th:text="${pegawai.nama}"></td>
+					</tr>
+					<tr>
+						<th scope="row">Tempat Lahir</th>
+						<td th:text="${pegawai.nip}"></td>
+					</tr>
+					<tr>
+						<th scope="row">NIP</th>
+						<td th:text="${pegawai.tempatLahir}"></td>
+					</tr>
+					<tr>
+						<th scope="row">Tanggal Lahir</th>
+						<td th:text="${pegawai.tanggalLahir}"></td>
+					</tr>
+					<tr>
+						<th scope="row">Tahun Masuk</th>
+						<td th:text="${pegawai.tahunMasuk}"></td>
+					</tr>
+					<tr>
+						<th scope="row">Nama Instansi</th>
+						<td th:text="${pegawai.instansi.nama}"></td>
+					</tr>
+					<tr>
+						<th scope="row">Jabatan</th>
+						<td>
+							<ul>
+								<li th:each="jabatan : ${jabatans}">
+									<div th:text="${jabatan.nama}"></div>
+								</li>
+							</ul>
+						</td>
+					</tr>
+					<th scope="row">Gaji</th>
+                        <td th:text="'Rp' + ${gaji}"></td>
+                    </tr>
+				</tbody>
+			</table>
+			</div>
+	</div>
 </body>
 
 </html>
