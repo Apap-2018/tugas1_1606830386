@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http//www.thymeleaf.org">
+	<head>
+		<title>Home</title>
+		<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+		<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+	</head>
+
+<body>	
+	<nav th:replace="fragments/fragment :: navbar">
+		<a class="navbar-brand" href="#"></a>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active">
+					<a class="nav-link" href="@{/}">Home</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<table>
+		<tr>
+			<th>Jabatan</th>
+			<th>Total</th>
+		</tr>
+		<tr th:each="jabatan : ${mapJumlah}">
+    		<td th:text="${jabatan.key.nama}">Jabatan</td>
+    		<td th:text="${jabatan.value}">Total</td>
+		</tr>
+	</table>
+</body>
+</html>

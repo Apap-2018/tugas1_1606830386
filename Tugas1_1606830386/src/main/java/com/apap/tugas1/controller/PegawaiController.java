@@ -36,7 +36,9 @@ public class PegawaiController {
 		model.addAttribute("jabatans",jabatans);
 		return "home";
 	}
-	
+	/*
+	 * fitur 1
+	 */
 	@RequestMapping(value = "/pegawai", method = RequestMethod.GET)
 	private String viewPegawai(@RequestParam String nip, Model model) {
 		PegawaiModel archive = pegawaiService.getPegawailByNip(nip);
