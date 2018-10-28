@@ -6,13 +6,40 @@
 		<object th:include="fragments/fragment :: js" th:remove="tag"></object>
 	</head>
 	<body>
-		<nav th:replace="fragments/fragment :: navbar "></nav>
+		<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<a class="navbar-brand" href="#">SIPEG</a>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active">
+						<a class="navbar-link" th:href="@{/}">Home</a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" th:href="@{/pegawai/tambah}">Tambah Pegawai</a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" th:href="@{/jabatan/tambah}">Tambah Jabatan</a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" th:href="@{/jabatan/viewTotal}">Lihat Jumlah Pegawai</a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" th:href="@{/jabatan/viewAll}">Lihat Semua Jabatan</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	
 		<div class="container-fluid">
+		<center>
+			<h1>Sistem Informasi Kepegawaian</h1>
+			<img src="https://ubisafe.org/images/discussed-clipart-job-specialization.png" alt="Pegawai">
+			<h2>Selamat datang di Sistem Informasi Kepegawaian</h2>
+		</center>
 		<div class="row">
 			<div class="col-md-6">
 				<div class="card">
 					<div class="card-header">
-					Cari Pegawai
+					<a name="cari_pegawai">Cari Pegawai</a>
 					</div>
 					<form th:action="@{/pegawai}" method="GET">
 						<div class="card-body">

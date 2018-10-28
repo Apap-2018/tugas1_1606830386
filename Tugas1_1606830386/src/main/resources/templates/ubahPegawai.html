@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http//www.thymeleaf.org">
-<head>
-	<title>Add Pegawai</title>
-	<object th:include="fragments/fragment :: css" th:remove="tag"></object>
-	<object th:include="fragments/fragment :: js" th:remove="tag"></object>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-</head>
+	<head>
+		<title>Home</title>
+		<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+		<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+	</head>
 
 <body>
 	<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -16,7 +15,7 @@
 						<a class="nav-link" th:href="@{/}">Home</a>
 					</li>
 					<li class="nav-item active">
-						<a class="navbar-link" th:href="@{/pegawai/tambah}">Tambah Pegawai</a>
+						<a class="nav-link" th:href="@{/pegawai/tambah}">Tambah Pegawai</a>
 					</li>
 					<li class="nav-item active">
 						<a class="nav-link" th:href="@{/jabatan/tambah}">Tambah Jabatan</a>
@@ -30,28 +29,28 @@
 				</ul>
 			</div>
 	</nav>
-	<h2>Hello!</h2>
-	<h3>Tambah Pegawai</h3>
-	<form th:action="@{/pegawai/tambah}" th:object="${pegawai}" method = "POST">
+	
+	<h3>Ganti Jabatan</h3>
+	<form th:action="@{/pegawai/ubah}" th:object="${pegawai}" method = "POST">
 		<table>
+				<input type="hidden" name="id" th:field="${pegawai.id}"/>
+				<input type="hidden" name="nip" th:field="${pegawai.nip}"/>
 				<tr>
 					<td width="200" height="40">Nama</td>
-					<td width="200"><input type="text" name="nama" size="55" th:value="${pegawai.nama}" /></td>
+					<td width="200"><input type="text" name="nama" size="55" th:field="${pegawai.nama}" /></td>
 				</tr>
 				<tr>
 					<td height="40">Tempat Lahir</td>
-					<td><input type="text" name="tempatLahir" size="55" th:value="${pegawai.tempatLahir}" /></td>
+					<td><input type="text" name="tempatLahir" size="55" th:field="${pegawai.tempatLahir}" /></td>
 				</tr>
 				<tr>
 					<td height="40">Tanggal Lahir</td>
-					<td><input type="date" name="tanggalLahir" th:value="${pegawai.tanggalLahir}" /></td>
+					<td><input type="date" name="tanggalLahir" th:field="${pegawai.tanggalLahir}" /></td>
 				</tr>
 				<tr>
 					<td height="40">Tahun Masuk</td>
-					<td><input type="number" name="tahunMasuk" size="55" th:value="${pegawai.tahunMasuk}" /></td>
+					<td><input type="number" name="tahunMasuk" size="55" th:field="${pegawai.tahunMasuk}" /></td>
 				</tr>
-				
-				
 				
 				<tr><td height="40">Nama Instansi</td>
 					<td><select  class="form-control" name="instansi">
@@ -76,38 +75,6 @@
 			<br>
 			<button type="submit" class="btn btn-primary">Simpan</button>
 	</form>
+		
 </body>
-<script type="text/javascript">
-	$(document).ready(function(){
-		console.log("hey")
-		$('#provinsi').change(function() {
-			valueProv = $(this).val();
-			console.log(valueProv)
-			$.ajax({
-				type: "GET",
-				url: "http://localhost:8080/pegawai/tambah/instansi?provinsi=",
-				data: {
-					'provinsiId' : valueProv
-				},
-				dataType: 'json',
-				success: function(data) {
-					console.log(data);
-					getIns = '';
-					var size = data.length;
-				
-					for (var i = 0; i<size; i++) {
-						getIns+='<option value="'+data[i].id+'">'+data[i].nama+'</option>';
-						console.log(data[i]);
-						console.log(data[i].nama)
-					}
-					console.log(getIns);
-					$('#instansi').append(getIns);
-				},
-				error: function(rs,e) {
-					alert(rs.responseText)
-				}
-			})
-		})
-	});
-</script>
 </html>

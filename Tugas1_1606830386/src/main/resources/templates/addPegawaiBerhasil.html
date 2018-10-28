@@ -1,12 +1,36 @@
 <!DOCTYPE html>
 <html xmlns:th="http//www.thymeleaf.org">
 <head>
-	<title>Add Pilot</title>
+	<title>Add Pegawai</title>
+	<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+	<object th:include="fragments/fragment :: js" th:remove="tag"></object>
 </head>
 
 <body>
-	<nav th:replace="fragments/fragment :: navbar "></nav>
-	<h3>BERHASIL MAS BRO</h3>
+	<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<a class="navbar-brand" href="#">SIPEG</a>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active">
+						<a class="nav-link" th:href="@{/}">Home</a>
+					</li>
+					<li class="nav-item active">
+						<a class="navbar-link" th:href="@{/pegawai/tambah}">Tambah Pegawai</a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" th:href="@{/jabatan/tambah}">Tambah Jabatan</a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" th:href="@{/jabatan/viewTotal}">Lihat Jumlah Pegawai</a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" th:href="@{/jabatan/viewAll}">Lihat Semua Jabatan</a>
+					</li>
+				</ul>
+			</div>
+	</nav>
+	<h3>Sukses!</h3>
+	<h2 th:text="'Pegawai dengan NIP ' + ${nip} + 'berhasil di tambahkan'"></h2>
 
 </body>
 </html>

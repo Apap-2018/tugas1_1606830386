@@ -31,7 +31,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name= "pegawai")
 public class PegawaiModel implements Serializable{
 	@Id
-	@Size(max = 20)
+	
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
@@ -51,7 +51,6 @@ public class PegawaiModel implements Serializable{
 	private String tempatLahir;
 	
 	@NotNull
-	@Size(max = 255)
 	@Column(name = "tanggal_lahir")
 	private Date tanggalLahir;
 	
