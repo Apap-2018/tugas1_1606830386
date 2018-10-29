@@ -302,7 +302,7 @@ public class PegawaiController {
 			System.out.println(pegawai.getNama());
 		}
 		model.addAttribute("listPegawai", pegawais);
-		return "home";
+		return "viewSpecific";
 	}
 	
 	
