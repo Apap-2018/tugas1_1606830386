@@ -10,4 +10,5 @@ public interface ProvinsiService {
 	
 	List<InstansiModel> getAllInstansi(int idProvinsi);
 	
+	ProvinsiModel getById(long id);
 }

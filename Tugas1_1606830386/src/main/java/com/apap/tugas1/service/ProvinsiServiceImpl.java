@@ -25,6 +25,11 @@ public class ProvinsiServiceImpl implements ProvinsiService{
 	public List<InstansiModel> getAllInstansi(int idProvinsi) {
 		return provinsiDb.findById(idProvinsi);
 	}
+
+	@Override
+	public ProvinsiModel getById(long id) {
+		return provinsiDb.findProvinsiById(id);
+	}
 	
 	
 }
